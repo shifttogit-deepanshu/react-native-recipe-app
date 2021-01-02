@@ -1,7 +1,7 @@
 import React from "react"
 import {View,Text,StyleSheet} from "react-native"
 
-const CategoriesMealsScreen = (props) => {
+const CategoryMealsScreen = (props) => {
     return (
         <View style={styles.screen}>
             <Text>The Categories Meals Screen</Text>
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
         alignItems:"center"
     }
 })
-export default CategoriesMealsScreen
+export default CategoryMealsScreen
