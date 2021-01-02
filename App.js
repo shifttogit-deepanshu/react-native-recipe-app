@@ -1,8 +1,11 @@
 import React,{useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font'
 import AppLoading from "expo-app-loading"
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import CategoriesScreen from "./screens/CategoriesScreen"
+import CategoryMealsScreen from "./screens/CategoryMealsScreen"
+import MealDetailScreen from "./screens/MealDetailScreen"
 
 const fetchFonts = ()=>{
   return Font.loadAsync({
@@ -10,6 +13,8 @@ const fetchFonts = ()=>{
     'openSansBold': require('./assets/Fonts/OpenSans-Bold.ttf')
   })
 }
+
+const Stack = createStackNavigator()
 
 export default function App() {
 
@@ -20,17 +25,12 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Categories">
+        <Stack.Screen name="Categories" component={CategoriesScreen}/>
+        <Stack.Screen name="Meals" component={CategoryMealsScreen}/>
+        <Stack.Screen name="Meal Details" component={MealDetailScreen}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+} 
