@@ -6,7 +6,7 @@ const CategoryGridTile = (props)=>{
     return (
         <TouchableOpacity onPress={props.onSelect} style={styles.gridItem}>
             <View style={{...styles.gridContainer,backgroundColor:props.color}}>
-                <Text>{props.title}</Text>
+                <Text numberOfLines={2} style={styles.title}>{props.title}</Text>
             </View>
         </TouchableOpacity>
         
@@ -32,6 +32,11 @@ const styles = StyleSheet.create({
         shadowOpacity:0.8,
         shadowRadius:10,
         elevation:3
+    },
+    title:{
+        fontFamily:"openSansBold",
+        textAlign:'right'
+
     }
 
 })
