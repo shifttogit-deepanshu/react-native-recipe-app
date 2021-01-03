@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CategoriesScreen from "./screens/CategoriesScreen"
 import CategoryMealsScreen from "./screens/CategoryMealsScreen"
 import MealDetailScreen from "./screens/MealDetailScreen"
+import Colors from "./Settings/Colors";
 
 const fetchFonts = ()=>{
   return Font.loadAsync({
@@ -27,7 +28,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Categories">
-        <Stack.Screen name="Categories" component={CategoriesScreen}/>
+        <Stack.Screen name="Categories" component={CategoriesScreen} options={{headerStyle:{backgroundColor:Colors.primaryColor},headerTintColor: '#fff',}}/>
         <Stack.Screen name="Meals" component={CategoryMealsScreen}/>
         <Stack.Screen name="Meal Details" component={MealDetailScreen}/>
       </Stack.Navigator>
