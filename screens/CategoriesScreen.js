@@ -8,7 +8,7 @@ import {CATEGORIES} from "../data/dummy-data"
 const CategoriesScreen = (props) => {
 
     const renderGridItem = (itemData)=>{
-        return <TouchableOpacity onPress={()=>props.navigation.navigate('Meals')} style={styles.gridItem}>
+        return <TouchableOpacity onPress={()=>props.navigation.navigate('Meals',{cat:itemData.item})} style={styles.gridItem}>
             <View >
                 <Text>{itemData.item.title}</Text>
             </View>

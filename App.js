@@ -29,8 +29,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Categories">
         <Stack.Screen name="Categories" component={CategoriesScreen} options={{headerStyle:{backgroundColor:Colors.primaryColor},headerTintColor: '#fff',}}/>
-        <Stack.Screen name="Meals" component={CategoryMealsScreen}/>
-        <Stack.Screen name="Meal Details" component={MealDetailScreen}/>
+        <Stack.Screen name="Meals" component={CategoryMealsScreen} options={({route})=>({title:route.params.cat.title})}/>
+        <Stack.Screen name="Meal Details" component={MealDetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
