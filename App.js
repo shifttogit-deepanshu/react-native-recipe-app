@@ -25,6 +25,12 @@ export default function App() {
   }
 
   return (
-    <CategoriesScreen />
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Categories">
+        <Stack.Screen name="Categories" component={CategoriesScreen}/>
+        <Stack.Screen name="Meals" component={CategoryMealsScreen}/>
+        <Stack.Screen name="Meal Details" component={MealDetailScreen}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 } 
