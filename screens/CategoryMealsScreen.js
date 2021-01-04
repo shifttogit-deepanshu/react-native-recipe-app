@@ -16,7 +16,7 @@ const CategoryMealsScreen = ({route,navigation}) => {
     
     const renderMealItem = (itemData)=>{
         return (
-           <MealItem title={itemData.item.title} onSelect={()=>{}} 
+           <MealItem title={itemData.item.title} onSelectMeal={()=>navigation.navigate('Meal Details',{mealId:itemData.item.id,headerTitle:itemData.item.title})} 
            duration={itemData.item.duration}
            complexity={itemData.item.complexity}
            affordability={itemData.item.affordability}
