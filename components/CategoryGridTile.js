@@ -1,15 +1,23 @@
 import React from "react"
-import {View,Text,StyleSheet,TouchableOpacity} from "react-native"
+import {View,Text,StyleSheet,TouchableOpacity,Platform,TouchableNativeFeedback} from "react-native"
+
 
 
 const CategoryGridTile = (props)=>{
+
+    let TouchableCmp = TouchableOpacity
+
+    if(Platform.OS=="android" && Platform.Version>=21){
+        TouchableCmp = TouchableNativeFeedback
+    }
     return (
-        <TouchableOpacity onPress={props.onSelect} style={styles.gridItem}>
+        <View style={styles.gridItem}>
+        <TouchableCmp onPress={props.onSelect} style={{flex:1}}>
             <View style={{...styles.gridContainer,backgroundColor:props.color}}>
                 <Text numberOfLines={2} style={styles.title}>{props.title}</Text>
             </View>
-        </TouchableOpacity>
-        
+        </TouchableCmp>
+        </View>
     )   
 }
 
@@ -19,7 +27,9 @@ const styles = StyleSheet.create({
     gridItem:{
         flex:1,
         margin:15,
-        height:150
+        height:150,
+        borderRadius:10,
+        overflow:"hidden"
     },
     gridContainer:{
         flex:1,
