@@ -32,10 +32,7 @@ export default function App() {
         <Stack.Screen name="Categories" component={CategoriesScreen}/>
         <Stack.Screen name="Meals" component={CategoryMealsScreen} options={({route})=>({title:route.params.cat.title})}/>
         <Stack.Screen name="Meal Details" component={MealDetailScreen} options={
-          ({route})=>({title:route.params.headerTitle,
-          headerRight: ()=><Button title="header btn" color="red" onPress={()=>alert("button pressed")}/>
-            
-          })}/>
+          ({route})=>({title:route.params.headerTitle})}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
