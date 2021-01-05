@@ -1,5 +1,5 @@
 import React from "react"
-import {View,Text,StyleSheet,TouchableOpacity,Platform,TouchableNativeFeedback} from "react-native"
+import {View,Text,StyleSheet,TouchableOpacity,TouchableNativeFeedback,Platform} from "react-native"
 
 
 
@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
         margin:15,
         height:150,
         borderRadius:10,
-        overflow:"hidden"
+        overflow:Platform.OS=="android" && Platform.Version>=21 ?"hidden": "visible",
+        elevation:5
     },
     gridContainer:{
         flex:1,
@@ -41,7 +42,6 @@ const styles = StyleSheet.create({
         shadowOffset:{width:5,height:5},
         shadowOpacity:0.8,
         shadowRadius:10,
-        elevation:3
     },
     title:{
         fontFamily:"openSansBold",
