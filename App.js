@@ -1,12 +1,13 @@
-import React,{useState} from 'react';
+import React,{useState} from 'react'
+import {Button} from "react-native"
 import * as Font from 'expo-font'
 import AppLoading from "expo-app-loading"
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 import CategoriesScreen from "./screens/CategoriesScreen"
 import CategoryMealsScreen from "./screens/CategoryMealsScreen"
 import MealDetailScreen from "./screens/MealDetailScreen"
-import Colors from "./Settings/Colors";
+import Colors from "./Settings/Colors"
 
 const fetchFonts = ()=>{
   return Font.loadAsync({
@@ -30,7 +31,11 @@ export default function App() {
       <Stack.Navigator initialRouteName="Categories"  screenOptions={{headerStyle:{backgroundColor:Colors.primaryColor},headerTintColor: '#fff',}}>
         <Stack.Screen name="Categories" component={CategoriesScreen}/>
         <Stack.Screen name="Meals" component={CategoryMealsScreen} options={({route})=>({title:route.params.cat.title})}/>
-        <Stack.Screen name="Meal Details" component={MealDetailScreen} options={({route})=>({title:route.params.headerTitle})}/>
+        <Stack.Screen name="Meal Details" component={MealDetailScreen} options={
+          ({route})=>({title:route.params.headerTitle,
+          headerRight: ()=><Button title="header btn" color="red" onPress={()=>alert("button pressed")}/>
+            
+          })}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
