@@ -60,7 +60,7 @@ export default function App() {
             iconName = focused ? 'ios-star':'ios-star-outline'
           }
 
-          return <Ionicons name={iconName} size={15} color={color}/>
+          return <Ionicons name={iconName} size={20} color={color}/>
         },
         tabBarColor:route.name=="Meals"? Colors.primaryColor: Colors.accentColor
       })} >
