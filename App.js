@@ -9,6 +9,7 @@ import CategoryMealsScreen from "./screens/CategoryMealsScreen"
 import MealDetailScreen from "./screens/MealDetailScreen"
 import FavouritesScreen from "./screens/FavouritesScreen"
 import Colors from "./Settings/Colors"
+import { Ionicons } from '@expo/vector-icons';
 
 const fetchFonts = ()=>{
   return Font.loadAsync({
@@ -41,7 +42,19 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator screenOptions={({route})=>({tabBarIcon:
+        ({focused,color,size})=>{
+          let iconName
+          if(route.name=="Meals"){
+            iconName = focused ? 'ios-restaurant':'ios-restaurant-outline'
+          }
+          else if(route.name=="Favourites"){
+            iconName = focused ? 'ios-star':'ios-star-outline'
+          }
+
+          return <Ionicons name={iconName} size={size} color={color} />
+        }
+      })} tabBarOptions={{activeTintColor:Colors.accentColor}}>
         <Tab.Screen name="Meals" component={MealsNavigator} />
         <Tab.Screen name="Favourites" component={FavouritesScreen} />      
       </Tab.Navigator>
