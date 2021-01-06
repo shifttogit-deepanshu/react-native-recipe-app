@@ -40,7 +40,7 @@ mealHeader:{
  },
  mealDetails:{
     paddingHorizontal:10,
-    justifyContent:"space-between",
+    justifyContent:"space-around",
     alignItems:"center",
     height:"10%"
  },

@@ -34,7 +34,7 @@ export default function App() {
 
 
   const MealsTabNavigator = ()=>{
-    return (<Stack.Navigator initialRouteName="Categories"  screenOptions={{headerStyle:{backgroundColor:Colors.primaryColor},headerTintColor: '#fff',}}>
+    return (<Stack.Navigator initialRouteName="Categories"  screenOptions={{headerStyle:{backgroundColor:Colors.primaryColor},headerTintColor: '#fff',headerTitleStyle:{fontFamily:'openSansBold'}}}>
       <Stack.Screen name="Categories" component={CategoriesScreen}/>
       <Stack.Screen name="Meals" component={CategoryMealsScreen} options={({route})=>({title:route.params.cat.title})}/>
       <Stack.Screen name="Meal Details" component={MealDetailScreen} options={({route})=>({title:route.params.headerTitle})}/>
@@ -71,7 +71,7 @@ export default function App() {
 
           return <Ionicons name={iconName} size={20} color={color}/>
         },
-        tabBarColor:route.name=="Meals"? Colors.primaryColor: Colors.accentColor
+        tabBarColor:route.name=="Meals"? Colors.primaryColor: Colors.accentColor,
       })} >
         <Tab.Screen name="Meals" component={MealsTabNavigator} />
         <Tab.Screen name="Your Favourites" component={FavouriteTabNavigator} />      
@@ -83,7 +83,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-        <MainNavigator.Navigator >
+        <MainNavigator.Navigator>
           <MainNavigator.Screen name="MealsFav" component={TabNavigator}/>
           <MainNavigator.Screen name="Filters" component={FiltersNavigator} />
         </MainNavigator.Navigator>
