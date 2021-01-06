@@ -3,13 +3,13 @@ import * as Font from 'expo-font'
 import AppLoading from "expo-app-loading"
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import CategoriesScreen from "./screens/CategoriesScreen"
 import CategoryMealsScreen from "./screens/CategoryMealsScreen"
 import MealDetailScreen from "./screens/MealDetailScreen"
 import FavouritesScreen from "./screens/FavouritesScreen"
 import Colors from "./Settings/Colors"
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 const fetchFonts = ()=>{
   return Font.loadAsync({
@@ -38,11 +38,11 @@ export default function App() {
     )
   }
 
-  const Tab = createBottomTabNavigator()
+  const Tab = createMaterialBottomTabNavigator();
 
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={({route})=>({tabBarIcon:
+      <Tab.Navigator shifting={true} screenOptions={({route})=>({tabBarIcon:
         ({focused,color,size})=>{
           let iconName
           if(route.name=="Meals"){
@@ -52,9 +52,10 @@ export default function App() {
             iconName = focused ? 'ios-star':'ios-star-outline'
           }
 
-          return <Ionicons name={iconName} size={size} color={color} />
-        }
-      })} tabBarOptions={{activeTintColor:Colors.accentColor}}>
+          return <Ionicons name={iconName} size={15} color={color}/>
+        },
+        tabBarColor:route.name=="Meals"?Colors.primaryColor:Colors.accentColor
+      })} >
         <Tab.Screen name="Meals" component={MealsNavigator} />
         <Tab.Screen name="Favourites" component={FavouritesScreen} />      
       </Tab.Navigator>
