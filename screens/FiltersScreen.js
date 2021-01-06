@@ -18,6 +18,9 @@ import {
 const FiltersScreen = (props) => {
 
     const [isGlutenFree,setIsGlutenFree] = useState(false)
+    const [islactoseFree,setIsLactoseFree] = useState(false)
+    const [isVegan,setIsVegan] = useState(false)
+    const [isVegetarian,setIsVegetarian] = useState(false)
 
     useLayoutEffect(()=>{
         props.navigation.setOptions({
@@ -31,7 +34,22 @@ const FiltersScreen = (props) => {
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>Available Filters/ Restrictions</Text>
-                <FilterSwitch label="Gluten-Free" state={isGlutenFree} onChange={newValue=>setIsGlutenFree(newValue)}/>
+                <FilterSwitch 
+                label="Gluten-Free" 
+                state={isGlutenFree} 
+                onChange={newValue=>setIsGlutenFree(newValue)}/>
+                <FilterSwitch 
+                label="lactose-Free" 
+                state={islactoseFree} 
+                onChange={newValue=>setIsLactoseFree(newValue)}/>
+                <FilterSwitch 
+                label="Vegan" 
+                state={isVegan} 
+                onChange={newValue=>setIsVegan(newValue)}/>
+                <FilterSwitch 
+                label="Vegetarian" 
+                state={isVegetarian} 
+                onChange={newValue=>setIsVegetarian(newValue)}/>
             </View>
     )
 
@@ -48,7 +66,8 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         justifyContent:"space-between",
         marginHorizontal:25,
-        alignItems:'center'
+        alignItems:'center',
+        marginVertical:10
     },
 
 })
