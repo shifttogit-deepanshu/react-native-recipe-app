@@ -7,9 +7,11 @@ import CategoriesScreen from "./screens/CategoriesScreen"
 import CategoryMealsScreen from "./screens/CategoryMealsScreen"
 import MealDetailScreen from "./screens/MealDetailScreen"
 import FavouritesScreen from "./screens/FavouritesScreen"
+import FiltersScreen from "./screens/FiltersScreen"
 import Colors from "./Settings/Colors"
 import { Ionicons } from '@expo/vector-icons'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const fetchFonts = ()=>{
   return Font.loadAsync({
@@ -31,7 +33,7 @@ export default function App() {
   }
 
 
-  const MealsNavigator = ()=>{
+  const MealsTabNavigator = ()=>{
     return (<Stack.Navigator initialRouteName="Categories"  screenOptions={{headerStyle:{backgroundColor:Colors.primaryColor},headerTintColor: '#fff',}}>
       <Stack.Screen name="Categories" component={CategoriesScreen}/>
       <Stack.Screen name="Meals" component={CategoryMealsScreen} options={({route})=>({title:route.params.cat.title})}/>
@@ -41,15 +43,15 @@ export default function App() {
   }
 
 
-  const FavouriteNavigator = ()=>{
+  const FavouriteTabNavigator = ()=>{
     return (<Stack.Navigator screenOptions={{headerStyle:{backgroundColor:Colors.accentColor},headerTintColor: '#fff',}}>
                 <Stack.Screen name="Favourites" component={FavouritesScreen}/>
             </Stack.Navigator>
     )
   }
 
-  return (
-    <NavigationContainer>
+  const TabNavigator = ()=>{
+    return (
       <Tab.Navigator shifting={true} screenOptions={({route})=>({tabBarIcon:
         ({focused,color,size})=>{
           let iconName
@@ -64,9 +66,20 @@ export default function App() {
         },
         tabBarColor:route.name=="Meals"? Colors.primaryColor: Colors.accentColor
       })} >
-        <Tab.Screen name="Meals" component={MealsNavigator} />
-        <Tab.Screen name="Your Favourites" component={FavouriteNavigator} />      
+        <Tab.Screen name="Meals" component={MealsTabNavigator} />
+        <Tab.Screen name="Your Favourites" component={FavouriteTabNavigator} />      
       </Tab.Navigator>
+    )
+  }
+
+  const MainNavigator = createDrawerNavigator()
+
+  return (
+    <NavigationContainer>
+        <MainNavigator.Navigator >
+          <MainNavigator.Screen name="MealsFav" component={TabNavigator}/>
+          <MainNavigator.Screen name="Filters" component={FiltersScreen} />
+        </MainNavigator.Navigator>
     </NavigationContainer>
   )
 } 
