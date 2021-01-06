@@ -20,6 +20,8 @@ const fetchFonts = ()=>{
 
 const Stack = createStackNavigator()
 
+const Tab = createMaterialBottomTabNavigator();
+
 export default function App() {
 
   const [dataLoaded,setDataLoaded] = useState(false)
@@ -38,7 +40,13 @@ export default function App() {
     )
   }
 
-  const Tab = createMaterialBottomTabNavigator();
+
+  const FavouriteNavigator = ()=>{
+    return (<Stack.Navigator screenOptions={{headerStyle:{backgroundColor:Colors.accentColor},headerTintColor: '#fff',}}>
+                <Stack.Screen name="Favourites" component={FavouritesScreen}/>
+            </Stack.Navigator>
+    )
+  }
 
   return (
     <NavigationContainer>
@@ -48,16 +56,16 @@ export default function App() {
           if(route.name=="Meals"){
             iconName = focused ? 'ios-restaurant':'ios-restaurant-outline'
           }
-          else if(route.name=="Favourites"){
+          else if(route.name=="Your Favourites"){
             iconName = focused ? 'ios-star':'ios-star-outline'
           }
 
           return <Ionicons name={iconName} size={15} color={color}/>
         },
-        tabBarColor:route.name=="Meals"?Colors.primaryColor:Colors.accentColor
+        tabBarColor:route.name=="Meals"? Colors.primaryColor: Colors.accentColor
       })} >
         <Tab.Screen name="Meals" component={MealsNavigator} />
-        <Tab.Screen name="Favourites" component={FavouritesScreen} />      
+        <Tab.Screen name="Your Favourites" component={FavouriteNavigator} />      
       </Tab.Navigator>
     </NavigationContainer>
   )
