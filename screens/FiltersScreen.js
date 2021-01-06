@@ -1,5 +1,6 @@
 import React,{useLayoutEffect,useState} from "react"
 import {View,Text,Switch,StyleSheet} from "react-native"
+import Colors from '../Settings/Colors'
 import {
     HeaderButtons,
     Item,
@@ -24,7 +25,9 @@ const FiltersScreen = (props) => {
             <Text style={styles.title}>Available Filters/ Restrictions</Text>
             <View style={styles.filter}>
             <Text>Gluten Free</Text>
-            <Switch value={isGlutenFree} onValueChange={newValue=>setIsGlutenFree(newValue)}/>
+            <Switch value={isGlutenFree} onValueChange={newValue=>setIsGlutenFree(newValue)} 
+            trackColor={{true:Colors.primaryColor,false:''}} thumbColor={Colors.primaryColor}/>
+            
             </View>
         </View>
     )
