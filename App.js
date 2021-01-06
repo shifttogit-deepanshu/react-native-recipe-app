@@ -49,6 +49,13 @@ export default function App() {
             </Stack.Navigator>
     )
   }
+  const FiltersNavigator = ()=>{
+    return (
+      <Stack.Navigator screenOptions={{headerStyle:{backgroundColor:Colors.primaryColor},headerTintColor: '#fff',}}>
+        <Stack.Screen name="Filter Meals" component={FiltersScreen}/>
+      </Stack.Navigator> 
+    )
+  }
 
   const TabNavigator = ()=>{
     return (
@@ -78,7 +85,7 @@ export default function App() {
     <NavigationContainer>
         <MainNavigator.Navigator >
           <MainNavigator.Screen name="MealsFav" component={TabNavigator}/>
-          <MainNavigator.Screen name="Filters" component={FiltersScreen} />
+          <MainNavigator.Screen name="Filters" component={FiltersNavigator} />
         </MainNavigator.Navigator>
     </NavigationContainer>
   )
