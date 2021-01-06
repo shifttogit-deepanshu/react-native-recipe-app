@@ -12,10 +12,8 @@ const ItemBox = (props)=>(
     <View style={styles.itemBox} key={props.listItem}>
     <Text>{props.children}</Text>
     </View>
-    
-
 )
-
+ 
 const MealDetailScreen = (props) => {
     const mealId = props.route.params.mealId
     const selectedMeal = MEALS.find((meal)=>meal.id===mealId)
