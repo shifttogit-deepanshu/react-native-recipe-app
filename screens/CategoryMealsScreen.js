@@ -1,6 +1,4 @@
 import React from "react"
-import {View,Text,StyleSheet,Button} from "react-native"
-import { FlatList } from "react-native-gesture-handler"
 import {CATEGORIES,MEALS} from "../data/dummy-data"
 
 import MealList from "../components/MealList"

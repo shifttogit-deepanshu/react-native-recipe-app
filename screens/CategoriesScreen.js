@@ -1,5 +1,5 @@
 import React,{useLayoutEffect} from "react"
-import {View,Text,StyleSheet,Button,FlatList} from "react-native"
+import {StyleSheet,FlatList} from "react-native"
 import {CATEGORIES} from "../data/dummy-data"
 import CategoryGridTile from "../components/CategoryGridTile"
 import {
@@ -27,7 +27,7 @@ const renderGridItem = (itemData)=>{
     }
 
     return (
-        <FlatList keyExtractor={(item,index)=>item.id} data={CATEGORIES} renderItem={renderGridItem} numColumns={2}/>
+        <FlatList keyExtractor={(item)=>item.id} data={CATEGORIES} renderItem={renderGridItem} numColumns={2}/>
     )
 
 }

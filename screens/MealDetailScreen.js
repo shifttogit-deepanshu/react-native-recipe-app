@@ -1,5 +1,5 @@
 import React,{useLayoutEffect} from "react"
-import {View,Text,StyleSheet,Button,ScrollView,Image} from "react-native"
+import {View,Text,StyleSheet,ScrollView,Image} from "react-native"
 import {MEALS} from "../data/dummy-data"
 import {
     HeaderButtons,
