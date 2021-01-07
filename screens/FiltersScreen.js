@@ -28,6 +28,11 @@ const FiltersScreen = (props) => {
                 <HeaderButtons HeaderButtonComponent={HeaderIconButton}>
                 <Item title="drawer" iconName="ios-menu" onPress={()=>props.navigation.toggleDrawer()}/>
                 </HeaderButtons>
+            ),
+            headerRight: ()=>(
+                <HeaderButtons HeaderButtonComponent={HeaderIconButton}>
+                <Item title="drawer" iconName="ios-save" onPress={()=>console.log(isGlutenFree)}/>
+                </HeaderButtons>
             )
         })
     })
