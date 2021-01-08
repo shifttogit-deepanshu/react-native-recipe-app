@@ -7,6 +7,7 @@ import {
   
 import HeaderIconButton from "../components/HeaderButton"
 import {connect} from "react-redux"
+import { toggleFavourite } from "../store/actions/meals"
 
 const ItemBox = (props)=>(
     <View style={styles.itemBox} key={props.listItem}>
@@ -21,7 +22,7 @@ const MealDetailScreen = (props) => {
     useLayoutEffect(()=>{
         props.navigation.setOptions({
             headerRight: ()=><HeaderButtons HeaderButtonComponent={HeaderIconButton}>
-                <Item title="Favourite" iconName="ios-star-outline" onPress={()=>alert("btn pressed")}/>
+                <Item title="Favourite" iconName="ios-star-outline" onPress={()=>props.addFavourite(selectedMeal.id)}/>
             </HeaderButtons>
         })
     })
@@ -75,4 +76,10 @@ const mapStateToProps = (state)=>{
         meals:state.meals
     }
 }
-export default connect(mapStateToProps)(MealDetailScreen)
+
+const mapDispatchtoProps = (dispatch)=>{
+    return {
+        addFavourite : (id)=>dispatch(toggleFavourite(id))
+    }
+}
+export default connect(mapStateToProps,mapDispatchtoProps)(MealDetailScreen)

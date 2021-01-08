@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps =(state)=>{
     return {
-    favouriteMeals: state.favouriteMeas
+    favouriteMeals: state.favouriteMeals
     }
 }
 export default connect(mapStateToProps)(FavouritesScreen)
