@@ -18,11 +18,12 @@ const ItemBox = (props)=>(
 const MealDetailScreen = (props) => {
     const mealId = props.route.params.mealId
     const selectedMeal = props.meals.find((meal)=>meal.id===mealId)
+    const isFav = props.favouriteMeals.some(meal=>meal.id===mealId)
 
     useLayoutEffect(()=>{
         props.navigation.setOptions({
             headerRight: ()=><HeaderButtons HeaderButtonComponent={HeaderIconButton}>
-                <Item title="Favourite" iconName="ios-star-outline" onPress={()=>{
+                <Item title="Favourite" iconName={isFav?"ios-star":"ios-star-outline"} onPress={()=>{
                     props.addFavourite(selectedMeal.id)
                 }}/>
             </HeaderButtons>
@@ -75,7 +76,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state)=>{
     return {
-        meals:state.meals
+        meals:state.meals,
+        favouriteMeals:state.favouriteMeals
     }
 }
 
