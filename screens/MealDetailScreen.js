@@ -24,7 +24,6 @@ const MealDetailScreen = (props) => {
             headerRight: ()=><HeaderButtons HeaderButtonComponent={HeaderIconButton}>
                 <Item title="Favourite" iconName="ios-star-outline" onPress={()=>{
                     props.addFavourite(selectedMeal.id)
-                    console.log("wored")
                 }}/>
             </HeaderButtons>
         })

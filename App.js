@@ -12,7 +12,7 @@ import Colors from "./Settings/Colors"
 import { Ionicons } from '@expo/vector-icons'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import {createStore,applyMiddleware} from 'redux'
+import {createStore} from 'redux'
 import mealsReducer from "./store/reducers/meals"
 import {Provider} from "react-redux"
 

@@ -1,5 +1,5 @@
 import {MEALS} from "../../data/dummy-data"
-import TOGGlE_FAVOURITE from "../actions/meals"
+import {TOGGlE_FAVOURITE} from "../actions/meals"
 const intialState = {
     meals:MEALS,
     filteredMeals:MEALS,
@@ -11,7 +11,7 @@ const mealReducer = (state=intialState,action)=>{
     switch(action.type){
         case TOGGlE_FAVOURITE:
             const existingIndex = state.favouriteMeals.findIndex(meal=>meal.id===action.mealId)
-            if(status>=0){
+            if(existingIndex>=0){
                 const updatedFavMeals = [...state.favouriteMeals]
                 updatedFavMeals.splice(existingIndex,1)
                 return {...state,favouriteMeals:updatedFavMeals}
