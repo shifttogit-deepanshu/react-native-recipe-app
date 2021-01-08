@@ -22,7 +22,10 @@ const MealDetailScreen = (props) => {
     useLayoutEffect(()=>{
         props.navigation.setOptions({
             headerRight: ()=><HeaderButtons HeaderButtonComponent={HeaderIconButton}>
-                <Item title="Favourite" iconName="ios-star-outline" onPress={()=>props.addFavourite(selectedMeal.id)}/>
+                <Item title="Favourite" iconName="ios-star-outline" onPress={()=>{
+                    props.addFavourite(selectedMeal.id)
+                    console.log("wored")
+                }}/>
             </HeaderButtons>
         })
     })

@@ -12,12 +12,13 @@ import Colors from "./Settings/Colors"
 import { Ionicons } from '@expo/vector-icons'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import {createStore} from 'redux'
+import {createStore,applyMiddleware} from 'redux'
 import mealsReducer from "./store/reducers/meals"
 import {Provider} from "react-redux"
 
 
-let store = createStore(mealsReducer)
+
+let store = createStore(mealsReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),)
 
 const fetchFonts = ()=>{
   return Font.loadAsync({
