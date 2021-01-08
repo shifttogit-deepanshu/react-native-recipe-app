@@ -10,8 +10,8 @@ import {connect} from "react-redux"
 import { toggleFavourite } from "../store/actions/meals"
 
 const ItemBox = (props)=>(
-    <View style={styles.itemBox} key={props.listItem}>
-    <Text>{props.children}</Text>
+    <View key={props.listItem} style={styles.itemBox}>
+    <Text >{props.children}</Text>
     </View>
 )
  
