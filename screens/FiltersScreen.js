@@ -6,6 +6,8 @@ import {
     Item,
   } from 'react-navigation-header-buttons'
   import HeaderIconButton from "../components/HeaderButton"
+  import {connect} from 'react-redux'
+  import {setFilters} from '../store/actions/meals.js'
 
   const FilterSwitch = (props)=>(
     <View style={styles.filter}>
@@ -22,6 +24,13 @@ const FiltersScreen = (props) => {
     const [isVegan,setIsVegan] = useState(false)
     const [isVegetarian,setIsVegetarian] = useState(false)
 
+    const filters = {
+        isGlutenFree :isGlutenFree,
+        islactoseFree : islactoseFree,
+        isVegan:isVegan,
+        isVegetarian:isVegetarian
+    }
+
     useLayoutEffect(()=>{
         props.navigation.setOptions({
             headerLeft: ()=>(
@@ -31,7 +40,7 @@ const FiltersScreen = (props) => {
             ),
             headerRight: ()=>(
                 <HeaderButtons HeaderButtonComponent={HeaderIconButton}>
-                <Item title="drawer" iconName="ios-save" onPress={()=>console.log(isGlutenFree)}/>
+                <Item title="drawer" iconName="ios-save" onPress={()=>props.addFilters(filters)}/>
                 </HeaderButtons>
             )
         })
@@ -76,4 +85,9 @@ const styles = StyleSheet.create({
     },
 
 })
-export default FiltersScreen
+
+const mapDispatchtoProps= (dispatch)=>{
+    return {addFilters : (filters)=>dispatch(setFilters(filters))}
+}
+
+export default connect(undefined,mapDispatchtoProps)(FiltersScreen)
