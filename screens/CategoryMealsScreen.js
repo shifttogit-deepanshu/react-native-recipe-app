@@ -1,24 +1,30 @@
 import React from "react"
-import {CATEGORIES,MEALS} from "../data/dummy-data"
+import {CATEGORIES} from "../data/dummy-data"
+import {connect} from "react-redux"
 
 import MealList from "../components/MealList"
 
-const CategoryMealsScreen = ({route,navigation}) => {
+const CategoryMealsScreen = (props) => {
 
 
-    const catId = route.params.cat.id
+    const catId = props.route.params.cat.id
 
-    const dispalyedMeals = MEALS.filter((meal)=>meal.categoryIds.indexOf(catId)>=0)
+    const dispalyedMeals = props.filteredMeals.filter((meal)=>meal.categoryIds.indexOf(catId)>=0)
 
     const category = CATEGORIES.find((cat)=>cat.id===catId)
 
     
     
     return (
-        <MealList listData={dispalyedMeals} navigation={navigation}/>
+        <MealList listData={dispalyedMeals} navigation={props.navigation}/>
     )
     
-
 }
 
-export default CategoryMealsScreen
+const mapStateToProps = (state)=>{
+    return {
+        filteredMeals: state.filteredMeals
+    }
+}
+
+export default connect(mapStateToProps)(CategoryMealsScreen)

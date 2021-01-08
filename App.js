@@ -12,6 +12,12 @@ import Colors from "./Settings/Colors"
 import { Ionicons } from '@expo/vector-icons'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import {createStore} from 'redux'
+import mealsReducer from "./store/reducers/meals"
+import {Provider} from "react-redux"
+
+
+let store = createStore(mealsReducer)
 
 const fetchFonts = ()=>{
   return Font.loadAsync({
@@ -82,11 +88,13 @@ export default function App() {
   const MainNavigator = createDrawerNavigator()
 
   return (
+    <Provider store={store}>
     <NavigationContainer>
         <MainNavigator.Navigator>
           <MainNavigator.Screen name="MealsFav" component={TabNavigator}/>
           <MainNavigator.Screen name="Filters" component={FiltersNavigator} />
         </MainNavigator.Navigator>
     </NavigationContainer>
+    </Provider>
   )
 } 

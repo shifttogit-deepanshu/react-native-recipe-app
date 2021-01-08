@@ -1,14 +1,12 @@
 import React,{useLayoutEffect} from "react"
 import {StyleSheet} from "react-native"
 import MealList from "../components/MealList"
-import {MEALS} from "../data/dummy-data"
 import {
     HeaderButtons,
     Item,
   } from 'react-navigation-header-buttons'
 import HeaderButton from "../components/HeaderButton"
-
-const favouriteList = MEALS.filter((meal)=>meal.id==='m1'|| meal.id==='m2')
+import {connect} from "react-redux"
 
 const FavouritesScreen = (props) => {
     useLayoutEffect(()=>{
@@ -22,7 +20,7 @@ const FavouritesScreen = (props) => {
     })
 
     return (
-        <MealList listData={favouriteList} navigation={props.navigation} />
+        <MealList listData={props.favouriteMeals} navigation={props.navigation} />
     )
 
 }
@@ -34,4 +32,10 @@ const styles = StyleSheet.create({
         alignItems:"center"
     }
 })
-export default FavouritesScreen
+
+const mapStateToProps =(state)=>{
+    return {
+    favouriteMeals: state.favouriteMeas
+    }
+}
+export default connect(mapStateToProps)(FavouritesScreen)

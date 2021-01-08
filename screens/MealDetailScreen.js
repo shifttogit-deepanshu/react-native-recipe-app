@@ -1,12 +1,12 @@
 import React,{useLayoutEffect} from "react"
 import {View,Text,StyleSheet,ScrollView,Image} from "react-native"
-import {MEALS} from "../data/dummy-data"
 import {
     HeaderButtons,
     Item,
   } from 'react-navigation-header-buttons'
   
 import HeaderIconButton from "../components/HeaderButton"
+import {connect} from "react-redux"
 
 const ItemBox = (props)=>(
     <View style={styles.itemBox} key={props.listItem}>
@@ -16,7 +16,7 @@ const ItemBox = (props)=>(
  
 const MealDetailScreen = (props) => {
     const mealId = props.route.params.mealId
-    const selectedMeal = MEALS.find((meal)=>meal.id===mealId)
+    const selectedMeal = props.meals.find((meal)=>meal.id===mealId)
 
     useLayoutEffect(()=>{
         props.navigation.setOptions({
@@ -69,4 +69,10 @@ const styles = StyleSheet.create({
          padding:10
      }
 })
-export default MealDetailScreen
+
+const mapStateToProps = (state)=>{
+    return {
+        meals:state.meals
+    }
+}
+export default connect(mapStateToProps)(MealDetailScreen)
