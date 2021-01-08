@@ -1,5 +1,5 @@
 import React,{useLayoutEffect} from "react"
-import {StyleSheet} from "react-native"
+import {View,Text,StyleSheet} from "react-native"
 import MealList from "../components/MealList"
 import {
     HeaderButtons,
@@ -18,10 +18,10 @@ const FavouritesScreen = (props) => {
             )
         })
     })
-
-    return (
-        <MealList listData={props.favouriteMeals} navigation={props.navigation} />
-    )
+    
+    
+    return props.favouriteMeals.length==0?<View style={styles.screen}><Text>No favourite meal found. start Adding some!</Text></View>:<MealList listData={props.favouriteMeals} navigation={props.navigation} />
+           
 
 }
 
